@@ -1,0 +1,231 @@
+{
+  "Records": [
+    {
+      "eventID": "a3fdb7e0d8d3d0e8a735af3e6296d19f",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-west-2",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1730226645,
+        "Keys": {
+          "PK": {
+            "S": "ORDER#12345"
+          },
+          "SK": {
+            "S": "DETAILS"
+          }
+        },
+        "NewImage": {
+          "PK": {
+            "S": "ORDER#12345"
+          },
+          "SK": {
+            "S": "DETAILS"
+          },
+          "orderId": {
+            "S": "12345"
+          },
+          "orderDate": {
+            "S": "2024-11-09T10:00:00Z"
+          },
+          "customerId": {
+            "S": "CUSTOMER#67890"
+          },
+          "totalAmount": {
+            "N": "250.00"
+          },
+          "status": {
+            "S": "PENDING"
+          },
+          "paymentMethod": {
+            "S": "Credit Card"
+          },
+          "shippingAddress": {
+            "M": {
+              "street": {
+                "S": "123 Main St"
+              },
+              "city": {
+                "S": "Seattle"
+              },
+              "state": {
+                "S": "WA"
+              },
+              "zipCode": {
+                "S": "98101"
+              }
+            }
+          }
+        },
+        "SequenceNumber": "6352900004274392493689080",
+        "SizeBytes": 549,
+        "StreamViewType": "NEW_IMAGE"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-west-2:644751828406:table/orders/stream/2024-11-09T10:00:00.770"
+    },
+    {
+      "eventID": "e9a3b01d7d80f4d9b43f30e8b79876c4",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-west-2",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1730226646,
+        "Keys": {
+          "PK": {
+            "S": "ORDER#12345"
+          },
+          "SK": {
+            "S": "ITEM#1"
+          }
+        },
+        "NewImage": {
+          "PK": {
+            "S": "ORDER#12345"
+          },
+          "SK": {
+            "S": "ITEM#1"
+          },
+          "orderId": {
+            "S": "12345"
+          },
+          "itemId": {
+            "S": "ITEM#1"
+          },
+          "productName": {
+            "S": "Laptop"
+          },
+          "quantity": {
+            "N": "1"
+          },
+          "unitPrice": {
+            "N": "150.00"
+          },
+          "totalPrice": {
+            "N": "150.00"
+          }
+        },
+        "SequenceNumber": "6352900004274392493689081",
+        "SizeBytes": 354,
+        "StreamViewType": "NEW_IMAGE"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-west-2:644751828406:table/orders/stream/2024-11-09T10:00:00.770"
+    },
+    {
+      "eventID": "f1d48a7a2b6d6a51c7a3cd28b4e51232",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-west-2",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1730226647,
+        "Keys": {
+          "PK": {
+            "S": "ORDER#12345"
+          },
+          "SK": {
+            "S": "ITEM#2"
+          }
+        },
+        "NewImage": {
+          "PK": {
+            "S": "ORDER#12345"
+          },
+          "SK": {
+            "S": "ITEM#2"
+          },
+          "orderId": {
+            "S": "12345"
+          },
+          "itemId": {
+            "S": "ITEM#2"
+          },
+          "productName": {
+            "S": "Mouse"
+          },
+          "quantity": {
+            "N": "1"
+          },
+          "unitPrice": {
+            "N": "25.00"
+          },
+          "totalPrice": {
+            "N": "25.00"
+          }
+        },
+        "SequenceNumber": "6352900004274392493689082",
+        "SizeBytes": 317,
+        "StreamViewType": "NEW_IMAGE"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-west-2:644751828406:table/orders/stream/2024-11-09T10:00:00.770"
+    },
+    {
+      "eventID": "c8b9d7d49b5294d7b3f4a827746fb12c",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-west-2",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1730226648,
+        "Keys": {
+          "PK": {
+            "S": "ORDER#12345"
+          },
+          "SK": {
+            "S": "SHIPMENT#12345"
+          }
+        },
+        "NewImage": {
+          "PK": {
+            "S": "ORDER#12345"
+          },
+          "SK": {
+            "S": "SHIPMENT#12345"
+          },
+          "orderId": {
+            "S": "12345"
+          },
+          "shipmentId": {
+            "S": "12345"
+          },
+          "status": {
+            "S": "Shipped"
+          },
+          "shipmentDate": {
+            "S": "2024-11-09T11:00:00Z"
+          },
+          "deliveryDate": {
+            "S": "2024-11-12T12:00:00Z"
+          },
+          "trackingNumber": {
+            "S": "TRACK123456789"
+          },
+          "carrier": {
+            "S": "UPS"
+          },
+          "shippingAddress": {
+            "M": {
+              "street": {
+                "S": "123 Main St"
+              },
+              "city": {
+                "S": "Seattle"
+              },
+              "state": {
+                "S": "WA"
+              },
+              "zipCode": {
+                "S": "98101"
+              }
+            }
+          }
+        },
+        "SequenceNumber": "6352900004274392493689083",
+        "SizeBytes": 467,
+        "StreamViewType": "NEW_IMAGE"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-west-2:644751828406:table/orders/stream/2024-11-09T10:00:00.770"
+    }
+  ]
+}

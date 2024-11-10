@@ -1,0 +1,79 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Stream handler function that syncs data with opensearch
+
+Parameters:
+  Stage:
+    Type: String
+    Default: "dev"
+    Description: "The API Stage name. Default is: dev"
+  LogisticsTableName:
+    Default: "logistics-service"
+    Type: String
+  OpenSearchConfiguration:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: "OPENSEARCH_CONFIGURATION"
+
+Resources:
+  LogisticsTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      TableName: !Ref LogisticsTableName
+      BillingMode: PAY_PER_REQUEST
+      KeySchema:
+        - AttributeName: "PK"
+          KeyType: "HASH"
+        - AttributeName: "SK"
+          KeyType: "RANGE"
+      AttributeDefinitions:
+        - AttributeName: "PK"
+          AttributeType: "S"
+        - AttributeName: "SK"
+          AttributeType: "S"
+
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+
+  LogisticsStreamCallbackFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: index.lambdaHandler
+      Runtime: nodejs20.x
+      Timeout: 200
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          STAGE: !Sub "${Stage}"
+          OPENSEARCH_CONFIGURATION: !Ref OpenSearchConfiguration
+
+      Events:
+        TableRecordChange:
+          Type: DynamoDB
+          Properties:
+            StartingPosition: LATEST
+            Stream: !GetAtt LogisticsTable.StreamArn
+            FilterCriteria:
+              Filters:
+                - Pattern: '{ "dynamodb": { "Keys": { "PK": { "S": [ { "prefix": "ORDER" } ] } } } }'
+                - Pattern: '{ "dynamodb": { "Keys": { "PK": { "S": [ { "prefix": "CUSTOMER#" } ] } } } }'
+
+    DependsOn:
+      - LogisticsTable
+
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+          - ./index.ts
+
+Outputs:
+  LogisticsStreamCallbackFunctionOutput:
+    Description: "Stream handler function that syncs data with opensearch"
+    Value: !Sub "https://${LogisticsStreamCallbackFunction}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/"

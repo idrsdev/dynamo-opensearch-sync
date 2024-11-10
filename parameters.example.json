@@ -1,0 +1,5 @@
+{
+  "LogisticsStreamCallbackFunction": {
+    "OPENSEARCH_CONFIGURATION": "https://<username>:<password>@<opensearch-domain>.<region>.es.amazonaws.com"
+  }
+}

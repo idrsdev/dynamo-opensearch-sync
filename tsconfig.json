@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es6",
+    "noEmit": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
+    "forceConsistentCasingInFileNames": true,
+    "preserveConstEnums": true,
+    "strict": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts"
+  ]
+}
