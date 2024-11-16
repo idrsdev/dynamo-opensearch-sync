@@ -1,20 +1,10 @@
-### For local testing from terminal:
-
-`npm i --registry=https://registry.npmjs.org/`
-
-`cp parameters.example.json parameters.json`
-
-provide the required values in the parameters.json
-
-Run the following command to invoke this function using the test event:
-
-    sam build LogisticsStreamCallbackFunction && sam local invoke LogisticsStreamCallbackFunction --event "event.json" --env-vars parameters.json
-
-> **Note**: Use this repository **at your own discretion**, especially for production use. This repository is provided as-is, and caution should be exercised when adapting it for live or production environments. Misconfigurations or improper usage could lead to data inconsistencies or other issues.
-
+## Table of Contents
+1. [Stream Architecture](#stream-architecture)
+2. [Local Testing](#local-testing)
+   
 # Stream Architecture
 
-This repository contains the stream processing logic for entities like user, order etc, as well as integration with services like OpenSearch. Below is the breakdown of the folder structure.
+This repository contains the DynamoDB stream processing logic for entities like user, order etc, as well as integration with services like OpenSearch. Below is the breakdown of the folder structure.
 
 ## 📦 Folder Structure
 
@@ -57,3 +47,18 @@ Contains services related to external integrations, such as OpenSearch.
 
 - **event.json**: A sample event file used for testing.
 - **index.ts**: The main entry point of the application.
+
+# Local Testing
+
+`npm i --registry=https://registry.npmjs.org/`
+
+`cp parameters.example.json parameters.json`
+
+provide the required values in the parameters.json
+
+Run the following command to invoke this function using the test event:
+
+    sam build LogisticsStreamCallbackFunction && sam local invoke LogisticsStreamCallbackFunction --event "event.json" --env-vars parameters.json
+
+> **Note**: Use this repository **at your own discretion**, especially for production use. This repository is provided as-is, and caution should be exercised when adapting it for live or production environments. Misconfigurations or improper usage could lead to data inconsistencies or other issues.
+
